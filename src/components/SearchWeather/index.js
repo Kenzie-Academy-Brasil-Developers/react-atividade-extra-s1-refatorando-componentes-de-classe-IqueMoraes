@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import "./style.css";
 
-function SearchWeather({ handleChangeWeather }) {
+function SearchWeather({ setWeather, setCity }) {
   // class SearchWeather extends Component {
   const [inputValue, setInputValue] = useState("Curitiba");
   const [cityValue, setCityValue] = useState(""); //criado para dar o start com o botão.
@@ -10,15 +10,12 @@ function SearchWeather({ handleChangeWeather }) {
   // state = {
   //   inputValue: "Curitiba",
   // };
-
   // componentDidMount() {
   //   this.handleSubmit();
   // }
-
   // handleSubmit = () => {
   //   // const { inputValue } = this.state;
   //   // const { handleChangeWeather } = this.props;
-
   //   // fetch(`https://goweather.herokuapp.com/weather/${this.state.inputValue}`)
   //     .then((response) => response.json())
   //     .then((response) => handleChangeWeather(response, inputValue));
@@ -27,8 +24,10 @@ function SearchWeather({ handleChangeWeather }) {
   useEffect(() => {
     fetch(`https://goweather.herokuapp.com/weather/${cityValue}`)
       .then((rest) => rest.json())
-      .then((rest) => handleChangeWeather(rest, cityValue));
-  }, []);
+      .then((rest) => {
+        setWeather(rest);
+      });
+  }, [cityValue]);
 
   // render() {
   return (

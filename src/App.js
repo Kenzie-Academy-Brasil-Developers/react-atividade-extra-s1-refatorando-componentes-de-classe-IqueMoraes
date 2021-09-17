@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import DisplayWeather from "./components/DisplayWeather";
 import SearchWeather from "./components/SearchWeather";
@@ -13,8 +13,6 @@ function App() {
   //   weather: {},
   //   city: "",
   // };
-
-  useEffect(() => {}, []);
 
   const handleChangeWeather = (weatherData, city) => {
     setWeather(weatherData);
